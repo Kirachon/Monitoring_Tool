@@ -71,14 +71,66 @@ class AuthService {
       // Get user roles and permissions
       const roles = await this.getUserRoles(user.id);
       const permissions = await this.getUserPermissions(user.id);
-      
+
+      // Derive role/permission names
+      let roleNames = roles.map(r => r.name);
+      let permNames = permissions.map(p => p.name);
+
+      // Development-only fallback: if DB mappings are missing, infer from username
+      if (process.env.NODE_ENV === 'development' && roleNames.length === 0) {
+        const usernameRoleMap = {
+          admin: 'System Administrator',
+          hradmin: 'HR Administrator',
+          supervisor: 'Supervisor',
+          employee: 'Employee'
+        };
+        const fallbackRole = usernameRoleMap[user.username];
+        if (fallbackRole) {
+          roleNames = [fallbackRole];
+          const permsByRole = {
+            'Employee': [
+              'pass_slip.create', 'pass_slip.read_own',
+              'leave.create', 'leave.read_own',
+              'employee.read_own', 'certificate.request',
+              'department.read'
+            ],
+            'Supervisor': [
+              'pass_slip.create', 'pass_slip.read_own', 'pass_slip.read_all', 'pass_slip.approve',
+              'leave.create', 'leave.read_own', 'leave.read_all', 'leave.approve',
+              'employee.read_own', 'employee.read_all',
+              'certificate.request', 'department.read',
+              'reports.view'
+            ],
+            'HR Administrator': [
+              'pass_slip.create', 'pass_slip.read_own', 'pass_slip.read_all', 'pass_slip.approve', 'pass_slip.cancel',
+              'leave.create', 'leave.read_own', 'leave.read_all', 'leave.approve', 'leave.cancel', 'leave.configure',
+              'employee.read_own', 'employee.read_all', 'employee.write',
+              'certificate.request', 'certificate.generate', 'certificate.manage_templates',
+              'department.read', 'department.write',
+              'reports.view', 'reports.export'
+            ],
+            'System Administrator': [
+              'pass_slip.create', 'pass_slip.read_own', 'pass_slip.read_all', 'pass_slip.approve', 'pass_slip.cancel',
+              'leave.create', 'leave.read_own', 'leave.read_all', 'leave.approve', 'leave.cancel', 'leave.configure',
+              'employee.read_own', 'employee.read_all', 'employee.write', 'employee.delete',
+              'certificate.request', 'certificate.generate', 'certificate.manage_templates',
+              'department.read', 'department.write',
+              'reports.view', 'reports.export',
+              'user.read', 'user.write', 'user.delete', 'user.assign_roles',
+              'system.config', 'system.audit_log', 'system.admin'
+            ]
+          };
+          permNames = permsByRole[fallbackRole] || [];
+        }
+      }
+
       // Generate JWT token
       const tokenPayload = {
         userId: user.id,
         username: user.username,
         employeeId: employee?.employee_id || null,
-        roles: roles.map(r => r.name),
-        permissions: permissions.map(p => p.name)
+        roles: roleNames,
+        permissions: permNames
       };
       
       const token = jwt.sign(
@@ -111,8 +163,8 @@ class AuthService {
           username: user.username,
           employeeId: employee?.employee_id || null,
           fullName: employee ? `${employee.first_name} ${employee.last_name}` : null,
-          roles: roles.map(r => r.name),
-          permissions: permissions.map(p => p.name),
+          roles: roleNames,
+          permissions: permNames,
           mustChangePassword: user.must_change_password || passwordExpired
         }
       };

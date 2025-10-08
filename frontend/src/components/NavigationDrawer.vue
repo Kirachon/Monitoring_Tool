@@ -99,8 +99,8 @@
         </v-list-group>
       </template>
 
-      <!-- HR Management section - only show if user can manage employees -->
-      <template v-if="canManageEmployees">
+      <!-- HR Management section - visible if user can at least view departments or employees -->
+      <template v-if="hasPermission('department.read') || hasPermission('employee.read_all') || canManageEmployees">
         <v-divider class="my-2" />
 
         <v-list-subheader>HR Management</v-list-subheader>
@@ -111,7 +111,7 @@
           title="Departments"
           value="departments"
           to="/departments"
-          :disabled="!canManageEmployees"
+          :disabled="!hasPermission('department.read')"
         />
 
         <!-- Employees -->
@@ -120,7 +120,7 @@
           title="Employees"
           value="employees"
           to="/employees"
-          :disabled="!canManageEmployees"
+          :disabled="!hasPermission('employee.read_all')"
         />
       </template>
 
