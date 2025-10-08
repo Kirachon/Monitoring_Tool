@@ -35,29 +35,29 @@
 
       <!-- Pass Slips -->
       <v-list-item
-        v-if="hasPermission('pass_slip.create')"
         prepend-icon="mdi-file-document"
         title="Pass Slips"
         value="pass-slips"
         to="/pass-slips"
+        :disabled="!hasPermission('pass_slip.create')"
       />
 
       <!-- Leave -->
       <v-list-item
-        v-if="hasPermission('leave.create')"
         prepend-icon="mdi-calendar-check"
         title="Leave"
         value="leave"
         to="/leave"
+        :disabled="!hasPermission('leave.create')"
       />
 
       <!-- Certificate Request -->
       <v-list-item
-        v-if="hasPermission('certificate.request')"
         prepend-icon="mdi-certificate"
         title="Request Certificate"
         value="certificate-request"
         to="/certificates/request"
+        :disabled="!hasPermission('certificate.request')"
       />
 
       <!-- Approvals section - only show if user can approve -->
@@ -82,19 +82,19 @@
           </template>
 
           <v-list-item
-            v-if="hasPermission('pass_slip.approve')"
             prepend-icon="mdi-clipboard-check"
             title="Pass Slips"
             value="pass-slip-approvals"
             to="/pass-slips/approvals"
+            :disabled="!hasPermission('pass_slip.approve')"
           />
 
           <v-list-item
-            v-if="hasPermission('leave.approve')"
             prepend-icon="mdi-calendar-check"
             title="Leave Requests"
             value="leave-approvals"
             to="/leave/approvals"
+            :disabled="!hasPermission('leave.approve')"
           />
         </v-list-group>
       </template>
@@ -111,6 +111,7 @@
           title="Departments"
           value="departments"
           to="/departments"
+          :disabled="!canManageEmployees"
         />
 
         <!-- Employees -->
@@ -119,6 +120,7 @@
           title="Employees"
           value="employees"
           to="/employees"
+          :disabled="!canManageEmployees"
         />
       </template>
 
@@ -136,35 +138,35 @@
           </template>
 
           <v-list-item
-            v-if="hasPermission('certificate.manage_templates')"
             prepend-icon="mdi-file-document-multiple"
             title="Templates"
             value="certificate-templates"
             to="/certificates/templates"
+            :disabled="!hasPermission('certificate.manage_templates')"
           />
 
           <v-list-item
-            v-if="hasPermission('certificate.generate')"
             prepend-icon="mdi-certificate-outline"
             title="Generate"
             value="certificate-generate"
             to="/certificates/generate"
+            :disabled="!hasPermission('certificate.generate')"
           />
 
           <v-list-item
-            v-if="hasPermission('certificate.generate')"
             prepend-icon="mdi-history"
             title="Issuance Log"
             value="certificate-log"
             to="/certificates/log"
+            :disabled="!hasPermission('certificate.generate')"
           />
 
           <v-list-item
-            v-if="hasPermission('certificate.manage_templates')"
             prepend-icon="mdi-draw"
             title="Digital Signatures"
             value="digital-signatures"
             to="/signatures"
+            :disabled="!hasPermission('certificate.manage_templates')"
           />
         </v-list-group>
       </template>
@@ -179,43 +181,43 @@
           </template>
 
           <v-list-item
-            v-if="canViewReports"
             prepend-icon="mdi-chart-bar"
             title="Pass Slips"
             value="reports-pass-slips"
             to="/reports/pass-slips"
+            :disabled="!canViewReports"
           />
 
           <v-list-item
-            v-if="canViewReports"
             prepend-icon="mdi-calendar"
             title="Leave"
             value="reports-leave"
             to="/reports/leave"
+            :disabled="!canViewReports"
           />
 
           <v-list-item
-            v-if="canViewReports"
             prepend-icon="mdi-certificate"
             title="Certificates"
             value="reports-certificates"
             to="/reports/certificates"
+            :disabled="!canViewReports"
           />
 
           <v-list-item
-            v-if="hasSystemAccess"
             prepend-icon="mdi-shield-key"
             title="Audit Logs"
             value="reports-audit"
             to="/reports/audit-logs"
+            :disabled="!hasSystemAccess"
           />
 
           <v-list-item
-            v-if="canViewReports"
             prepend-icon="mdi-account"
             title="Employees"
             value="reports-employees"
             to="/reports/employees"
+            :disabled="!canViewReports"
           />
         </v-list-group>
       </template>
@@ -232,6 +234,7 @@
           title="User Management"
           value="users"
           to="/users"
+          :disabled="!hasSystemAccess"
         />
 
         <!-- System Settings -->
@@ -240,6 +243,7 @@
           title="System Settings"
           value="settings"
           to="/settings"
+          :disabled="!hasSystemAccess"
         />
       </template>
 
