@@ -64,6 +64,29 @@ Note: Drawer uses ":disabled" bindings (not v-if) for most items to maintain vis
 
 - In development, sessions are not enforced server-side; /api/auth/logout returns 200 but token remains technically valid if retained. The Pinia store’s logout action clears localStorage and axios Authorization header, which is sufficient to block access from the client. ⏳ Verify visually that logout returns to /login and protected routes are inaccessible afterward.
 
+
+### E. Production (Vercel + Railway) Login Fix Summary
+
+- Backend health: https://hrms-production-production.up.railway.app/api/health → environment=production, database=connected ✅
+- Root causes identified:
+  1) Production DB `user_roles` empty for test users → roles/permissions [] returned on login ❌
+  2) Likely CORS/env mismatch between Vercel and Railway if `FRONTEND_URL` (Railway) and `VITE_API_URL` (Vercel) are not set correctly
+- Actions performed:
+  - Executed admin-only repair endpoint on Railway: `POST /api/auth/repair-test-roles` (admin token). Result: roles assigned for admin/hradmin/supervisor/employee ✅
+  - Verified production login via API:
+    - admin → roles ["System Administrator"], perms 29 ✅
+    - hradmin → roles ["HR Administrator"], perms 21 ✅
+    - supervisor → roles ["Supervisor"], perms 13 ✅
+    - employee → roles ["Employee"], perms 7 ✅
+- Pending/Required configuration to complete Vercel login:
+  - On Vercel Project → Environment Variables: set `VITE_API_URL=https://hrms-production-production.up.railway.app/api` and redeploy ✅
+  - On Railway Service → Environment Variables: set `FRONTEND_URL=https://<your-vercel-domain>.vercel.app` (exact domain), restart service ✅
+- After applying env changes, verify in Vercel:
+  - Login for all 4 users succeeds, roles/permissions populated
+  - No CORS errors in console
+  - Drawer enable/disable states match role
+  - Router guards block unauthorized routes
+
 3. Test core workflows (click enabled items, verify pages load)
 4. Test router guards (attempt direct URL navigation to restricted routes)
 5. Verify logout functionality
