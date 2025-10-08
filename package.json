@@ -1,0 +1,28 @@
+{
+  "name": "monitoring_tool",
+  "version": "1.0.0",
+  "description": "**Human Resource Management System for Philippine Government Offices**",
+  "main": "generate-stories.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirachon/Monitoring_Tool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kirachon/Monitoring_Tool/issues"
+  },
+  "homepage": "https://github.com/Kirachon/Monitoring_Tool#readme",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.1",
+    "playwright": "^1.55.1"
+  }
+}

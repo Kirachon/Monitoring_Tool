@@ -1,0 +1,40 @@
+/* Typography Utilities per Design System */
+
+:root {
+  /* Headings */
+  --text-h1-size: 2.5rem; --text-h1-weight: 700; --text-h1-line: 1.2; --text-h1-track: -0.02em;
+  --text-h2-size: 2rem;   --text-h2-weight: 600; --text-h2-line: 1.3; --text-h2-track: -0.01em;
+  --text-h3-size: 1.75rem;--text-h3-weight: 600; --text-h3-line: 1.4; --text-h3-track: 0;
+  --text-h4-size: 1.5rem; --text-h4-weight: 500; --text-h4-line: 1.4; --text-h4-track: 0;
+  --text-h5-size: 1.25rem;--text-h5-weight: 500; --text-h5-line: 1.5; --text-h5-track: 0;
+  --text-h6-size: 1rem;   --text-h6-weight: 500; --text-h6-line: 1.5; --text-h6-track: 0.01em;
+
+  /* Body */
+  --text-body1-size: 1rem;     --text-body1-weight: 400; --text-body1-line: 1.5;  --text-body1-track: 0.01em;
+  --text-body2-size: 0.875rem; --text-body2-weight: 400; --text-body2-line: 1.43; --text-body2-track: 0.01em;
+
+  /* Utility */
+  --text-subtitle1-size: 1rem;   --text-subtitle1-weight: 400; --text-subtitle1-line: 1.75;
+  --text-subtitle2-size: 0.875rem;--text-subtitle2-weight: 500; --text-subtitle2-line: 1.57;
+  --text-button-size: 0.875rem;  --text-button-weight: 500; --text-button-line: 1.75; --text-button-track: 0.02em;
+  --text-caption-size: 0.75rem;  --text-caption-weight: 400; --text-caption-line: 1.66; --text-caption-track: 0.03em;
+  --text-overline-size: 0.75rem; --text-overline-weight: 500; --text-overline-line: 2.66; --text-overline-track: 0.08em;
+}
+
+.text-h1 { font-size: var(--text-h1-size); font-weight: var(--text-h1-weight); line-height: var(--text-h1-line); letter-spacing: var(--text-h1-track); }
+.text-h2 { font-size: var(--text-h2-size); font-weight: var(--text-h2-weight); line-height: var(--text-h2-line); letter-spacing: var(--text-h2-track); }
+.text-h3 { font-size: var(--text-h3-size); font-weight: var(--text-h3-weight); line-height: var(--text-h3-line); letter-spacing: var(--text-h3-track); }
+.text-h4 { font-size: var(--text-h4-size); font-weight: var(--text-h4-weight); line-height: var(--text-h4-line); letter-spacing: var(--text-h4-track); }
+.text-h5 { font-size: var(--text-h5-size); font-weight: var(--text-h5-weight); line-height: var(--text-h5-line); letter-spacing: var(--text-h5-track); }
+.text-h6 { font-size: var(--text-h6-size); font-weight: var(--text-h6-weight); line-height: var(--text-h6-line); letter-spacing: var(--text-h6-track); }
+
+.text-body-1 { font-size: var(--text-body1-size); font-weight: var(--text-body1-weight); line-height: var(--text-body1-line); letter-spacing: var(--text-body1-track); }
+.text-body-2 { font-size: var(--text-body2-size); font-weight: var(--text-body2-weight); line-height: var(--text-body2-line); letter-spacing: var(--text-body2-track); }
+
+.text-subtitle-1 { font-size: var(--text-subtitle1-size); font-weight: var(--text-subtitle1-weight); line-height: var(--text-subtitle1-line); }
+.text-subtitle-2 { font-size: var(--text-subtitle2-size); font-weight: var(--text-subtitle2-weight); line-height: var(--text-subtitle2-line); }
+
+.text-button { font-size: var(--text-button-size); font-weight: var(--text-button-weight); line-height: var(--text-button-line); letter-spacing: var(--text-button-track); text-transform: uppercase; }
+.text-caption { font-size: var(--text-caption-size); font-weight: var(--text-caption-weight); line-height: var(--text-caption-line); letter-spacing: var(--text-caption-track); }
+.text-overline { font-size: var(--text-overline-size); font-weight: var(--text-overline-weight); line-height: var(--text-overline-line); letter-spacing: var(--text-overline-track); text-transform: uppercase; }
+

@@ -1,0 +1,114 @@
+/* Design Tokens for Philippine Government HRMS */
+/* Generated per docs/DESIGN-SYSTEM-SPECIFICATION.md */
+
+:root {
+  /* Font families */
+  --font-family-base: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-heading: 'Roboto', sans-serif;
+  --font-family-mono: 'Roboto Mono', 'Courier New', monospace;
+
+  /* Primary - Philippine Blue */
+  --color-primary-base: #0038A8;
+  --color-primary-lighten-1: #1E4DB7;
+  --color-primary-lighten-2: #4A6BC5;
+  --color-primary-lighten-3: #7689D3;
+  --color-primary-lighten-4: #A2A7E1;
+  --color-primary-darken-1: #002D8F;
+  --color-primary-darken-2: #002276;
+  --color-primary-darken-3: #00175D;
+  --color-primary-darken-4: #000C44;
+
+  /* Secondary - Philippine Red */
+  --color-secondary-base: #CE1126;
+  --color-secondary-lighten-1: #D63A4D;
+  --color-secondary-lighten-2: #DE6374;
+  --color-secondary-lighten-3: #E68C9B;
+  --color-secondary-lighten-4: #EEB5C2;
+  --color-secondary-darken-1: #B50E20;
+  --color-secondary-darken-2: #9C0B1A;
+  --color-secondary-darken-3: #830814;
+  --color-secondary-darken-4: #6A050E;
+
+  /* Accent - Philippine Yellow */
+  --color-accent-base: #FCD116;
+  --color-accent-lighten-1: #FDD745;
+  --color-accent-lighten-2: #FDDD74;
+  --color-accent-lighten-3: #FEE3A3;
+  --color-accent-lighten-4: #FEE9D2;
+  --color-accent-darken-1: #E3BC13;
+  --color-accent-darken-2: #CAA710;
+  --color-accent-darken-3: #B1920D;
+  --color-accent-darken-4: #987D0A;
+
+  /* Semantic */
+  --color-success: #388E3C;
+  --color-error: #D32F2F;
+  --color-warning: #F57C00;
+  --color-info: #1976D2;
+
+  /* Status */
+  --color-status-pending: #F57C00;
+  --color-status-approved: #388E3C;
+  --color-status-denied: #D32F2F;
+  --color-status-cancelled: #757575;
+  --color-status-completed: #1976D2;
+
+  /* Neutrals */
+  --color-neutral-50: #FAFAFA;
+  --color-neutral-100: #F5F5F5;
+  --color-neutral-200: #EEEEEE;
+  --color-neutral-300: #E0E0E0;
+  --color-neutral-400: #BDBDBD;
+  --color-neutral-500: #9E9E9E;
+  --color-neutral-600: #757575;
+  --color-neutral-700: #616161;
+  --color-neutral-800: #424242;
+  --color-neutral-900: #212121;
+
+  /* Surfaces */
+  --color-background: #F5F5F5;
+  --color-surface: #FFFFFF;
+  --color-surface-variant: #F0F2F5;
+
+  /* Elevation shadows */
+  --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --elevation-2: 0 3px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12);
+  --elevation-3: 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.10);
+  --elevation-4: 0 15px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+  --elevation-5: 0 20px 40px rgba(0,0,0,0.20);
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* Dark Mode Tokens (future) */
+:root[data-theme="dark"] {
+  --color-background: #121212;
+  --color-surface: #1E1E1E;
+  --color-surface-variant: #2D2D2D;
+
+  /* Primary shades tuned for dark backgrounds */
+  --color-primary-base: #4A6BC5;
+  --color-primary-lighten-1: #7689D3;
+  --color-primary-lighten-2: #A2A7E1;
+  --color-primary-darken-1: #1E4DB7;
+  --color-primary-darken-2: #0038A8;
+
+  /* Neutrals reversed for dark */
+  --color-neutral-50: #1E1E1E;
+  --color-neutral-100: #2D2D2D;
+  --color-neutral-200: #3D3D3D;
+  --color-neutral-300: #4D4D4D;
+  --color-neutral-400: #6D6D6D;
+  --color-neutral-500: #8D8D8D;
+  --color-neutral-600: #ADADAD;
+  --color-neutral-700: #CDCDCD;
+  --color-neutral-800: #E0E0E0;
+  --color-neutral-900: #F5F5F5;
+}
+
