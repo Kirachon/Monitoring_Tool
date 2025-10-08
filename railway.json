@@ -5,6 +5,7 @@
     "buildCommand": "cd backend && npm install"
   },
   "deploy": {
+    "preDeployCommand": "cd backend && npx knex migrate:latest --env production && npx knex seed:run --env production || true",
     "startCommand": "cd backend && npm start",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
