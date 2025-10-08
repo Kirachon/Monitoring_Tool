@@ -87,6 +87,24 @@ Note: Drawer uses ":disabled" bindings (not v-if) for most items to maintain vis
   - Drawer enable/disable states match role
   - Router guards block unauthorized routes
 
+### F. Final Vercel Deployment and Verification
+
+- Vercel Production URL: https://frontend-dnf3lavy6-matts-projects-3052ef98.vercel.app
+- Vercel Env: VITE_API_URL=https://hrms-production-production.up.railway.app/api (set via `vercel env add`)
+- Railway Env: FRONTEND_URL=https://frontend-dnf3lavy6-matts-projects-3052ef98.vercel.app (set via `railway variables --set`)
+- CORS Verification: Backend POST /api/auth/login with Origin set to Vercel URL → 200 and Access-Control-Allow-Origin echoes Vercel origin ✅
+- Production API Verification for 4 roles (post-repair):
+  - admin → roles ["System Administrator"], perms 29 ✅
+  - hradmin → roles ["HR Administrator"], perms 21 ✅
+  - supervisor → roles ["Supervisor"], perms 13 ✅
+  - employee → roles ["Employee"], perms 7 ✅
+- Next visual step on Vercel:
+  - Confirm UI login succeeds for all 4 users
+  - Drawer enabled/disabled states match role
+  - Router guards block unauthorized routes
+  - Logout returns to /login and protects routes from back navigation
+
+
 3. Test core workflows (click enabled items, verify pages load)
 4. Test router guards (attempt direct URL navigation to restricted routes)
 5. Verify logout functionality
