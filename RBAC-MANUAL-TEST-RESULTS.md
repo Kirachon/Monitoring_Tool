@@ -104,6 +104,16 @@ Note: Drawer uses ":disabled" bindings (not v-if) for most items to maintain vis
   - Router guards block unauthorized routes
   - Logout returns to /login and protects routes from back navigation
 
+- Stable Production Domain configured on Vercel: https://frontend-matts-projects-3052ef98.vercel.app
+- Railway FRONTEND_URL updated to stable domain and redeployed
+- Post-redeploy repair executed: POST /api/auth/repair-test-roles (admin-only) assigned 4 test roles
+- Final verification (stable domain origin):
+  - admin → roles ["System Administrator"], perms 29 ✅
+  - hradmin → roles ["HR Administrator"], perms 21 ✅
+  - supervisor → roles ["Supervisor"], perms 13 ✅
+  - employee → roles ["Employee"], perms 7 ✅
+
+
 
 3. Test core workflows (click enabled items, verify pages load)
 4. Test router guards (attempt direct URL navigation to restricted routes)
